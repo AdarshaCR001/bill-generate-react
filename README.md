@@ -8,6 +8,8 @@ In the project directory, you can run:
 
 ### `npm start`
 
+sudo docker run -d -p 3080:8080 -p 3443:8443 -p 3000:8000  --name billupdatereact adarshacr/billupdate_react:0.0.1
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
