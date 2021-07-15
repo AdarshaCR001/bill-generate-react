@@ -1,8 +1,9 @@
 import './App.css';
 import BillForm from './component/BillForm'
-import { Container, Modal, Button, Card, Accordion } from 'react-bootstrap';
+import { Container, Row, Button, Card, Accordion } from 'react-bootstrap';
 import Header from './component/Header';
 import React, { useState } from 'react';
+import BillTable from './component/BillTable';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -11,7 +12,6 @@ function App() {
     <>
       <Header />
       <Container>
-
         <Card body>
           <Accordion defaultActiveKey="0">
             <Card>
@@ -30,7 +30,7 @@ function App() {
               </Accordion.Toggle>
 
               <Accordion.Collapse eventKey="1">
-                <Card.Body></Card.Body>
+                <Card.Body><BillTable /></Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
