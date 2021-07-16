@@ -8,7 +8,10 @@ In the project directory, you can run:
 
 ### `npm start`
 
-docker run -d -p 3001:3000  --name billupdatereact adarshacr/billupdate_react:0.0.1
+docker run -d -p 3000:3000  --name billupdatereact adarshacr/billupdate_react:0.0.1
+
+# To bild docker image for both amd and arm
+docker buildx build --platform linux/amd64,linux/arm64 . --tag adarshacr/billupdate_react:0.0.1;  
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
