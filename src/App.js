@@ -1,12 +1,11 @@
 import './App.css';
 import BillForm from './component/BillForm'
-import { Container, Row, Button, Card, Accordion } from 'react-bootstrap';
+import { Container, Card, Accordion } from 'react-bootstrap';
 import Header from './component/Header';
-import React, { useState } from 'react';
+import React from 'react';
 import BillTable from './component/BillTable';
 
 function App() {
-  const [show, setShow] = useState(false);
 
   return (
     <>
@@ -30,7 +29,10 @@ function App() {
               </Accordion.Toggle>
 
               <Accordion.Collapse eventKey="1">
-                <Card.Body><BillTable /></Card.Body>
+                <Card.Body>
+                  <h2 className="text-center">Last 10 records</h2>
+                  <BillTable />
+                  </Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>

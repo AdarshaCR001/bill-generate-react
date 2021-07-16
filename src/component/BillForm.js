@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -31,7 +31,7 @@ myHeaders.append("Content-Type", "application/json");
             redirect: 'follow'
           };
 
-        fetch("http://ec2-3-108-191-5.ap-south-1.compute.amazonaws.com/bill_backend/bill/generateBill", requestOptions)
+        fetch(api, requestOptions)
   .then(response => response.text())
   .then(result => { result=JSON.parse(result); setDownloadUrl(result.url); window.open(result.url,'_blank');})
   .catch(error => console.log('error', error));
@@ -44,7 +44,7 @@ myHeaders.append("Content-Type", "application/json");
         //         console.log(error);
         //         alert(error);
         //     });
-        //resetForm({});
+        resetForm({});
     }
     const vehicleNumberRegx=/^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/;
     const validate = values => {
