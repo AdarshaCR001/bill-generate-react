@@ -49,9 +49,9 @@ myHeaders.append("Content-Type", "application/json");
     const vehicleNumberRegx=/^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/;
     const validate = values => {
         const errors = {};
-        if (!values.buyerName) {
-            errors.buyerName = 'Required';
-        }
+        // if (!values.buyerName) {
+        //     errors.buyerName = 'Required';
+        // }
         if (!values.buyerCompany) {
             errors.buyerCompany = 'Required';
         }
