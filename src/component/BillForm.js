@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
@@ -13,28 +13,29 @@ function BillForm() {
         price: '',
         itemName: '',
         bag: '',
-        vehicleNumber: ''
+        vehicleNumber: '',
+        vehicleFreight: ''
     };
 
     const [downloadUrl, setDownloadUrl] = useState('')
 
-    const onSubmit = (values,{resetForm}) => {
+    const onSubmit = (values, { resetForm }) => {
         var api = backendUrl + "bill/generateBill";
         console.log(JSON.stringify(values));
 
         var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Content-Type", "application/json");
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: JSON.stringify(values),
             redirect: 'follow'
-          };
+        };
 
         fetch(api, requestOptions)
-  .then(response => response.text())
-  .then(result => { result=JSON.parse(result); setDownloadUrl(result.url); window.open(result.url,'_blank');})
-  .catch(error => console.log('error', error));
+            .then(response => response.text())
+            .then(result => { result = JSON.parse(result); setDownloadUrl(result.url); window.open(result.url, '_blank'); })
+            .catch(error => console.log('error', error));
         // axios.post(api, JSON.stringify(values))
         //     .then(function (response) {
         //         console.log(response);
@@ -46,7 +47,7 @@ myHeaders.append("Content-Type", "application/json");
         //     });
         resetForm({});
     }
-    const vehicleNumberRegx=/^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/;
+    const vehicleNumberRegx = /^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/;
     const validate = values => {
         const errors = {};
         // if (!values.buyerName) {
@@ -57,20 +58,23 @@ myHeaders.append("Content-Type", "application/json");
         }
         if (!values.buyerAddress) {
             errors.buyerAddress = 'Required';
-        }if (!Number.isInteger(values.quantity) || values.quantity < 1) {
+        }
+        if (!Number.isInteger(values.quantity) || values.quantity < 1) {
             errors.quantity = "Please enter valid number";
-        }if (!Number.isInteger(values.price) || values.price < 1) {
+        }
+        if (!Number.isInteger(values.price) || values.price < 1) {
             errors.price = "Please enter valid number";
         }
         if (!values.itemName) {
             errors.itemName = 'Required';
-        }if (!Number.isInteger(values.bag) || values.bag < 1) {
+        }
+        if (!Number.isInteger(values.bag) || values.bag < 1) {
             errors.bag = "Please enter valid number";
         }
         if (!values.vehicleNumber) {
             errors.vehicleNumber = 'Required';
-        }else if(!vehicleNumberRegx.test(values.vehicleNumber)){
-            errors.vehicleNumber="Please enter valid vechicle number.\n ex: KA11AA1111";
+        } else if (!vehicleNumberRegx.test(values.vehicleNumber)) {
+            errors.vehicleNumber = "Please enter valid vechicle number.\n ex: KA11AA1111";
         }
 
         return errors;
@@ -216,11 +220,28 @@ myHeaders.append("Content-Type", "application/json");
                 </Col>
             </Form.Group>
 
+            <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm="2" >Vehicle Freight</Form.Label>
+                <Col sm="10">
+                    <Form.Control size="lg"
+                        type="number"
+                        placeholder="Vehicle Freight"
+                        id="vehicleFreight"
+                        name="vehicleFreight"
+                        min="1"
+                        {...formik.getFieldProps('vehicleFreight')}
+                    />
+                    {formik.errors.vehicleFreight && formik.touched.vehicleFreight ? (
+                        <div style={{ color: "red" }}>{formik.errors.vehicleFreight}</div>
+                    ) : null}
+                </Col>
+            </Form.Group>
+
             <Button type="submit" variant="primary" style={{ width: "100%" }}>Generate Bill</Button>
             <br />
             <br />
-            { downloadUrl!=="" ?
-                <a href={downloadUrl} rel="noopener noreferrer" target="_blank" download><Button  variant="success">Download Bill Again</Button></a> 
+            {downloadUrl !== "" ?
+                <a href={downloadUrl} rel="noopener noreferrer" target="_blank" download><Button variant="success">Download Bill Again</Button></a>
                 : null
             }
         </Form>
