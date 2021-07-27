@@ -3,19 +3,9 @@ import { useFormik } from 'formik';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 
-function BillForm() {
-    const backendUrl = "http://ec2-3-108-191-5.ap-south-1.compute.amazonaws.com/bill_backend/";
-    const initialValues = {
-        buyerName: '',
-        buyerCompany: '',
-        buyerAddress: '',
-        quantity: '',
-        price: '',
-        itemName: '',
-        bag: '',
-        vehicleNumber: '',
-        vehicleFreight: ''
-    };
+function BillForm({ bill }) {
+    const backendUrl = "http://localhost:7080/bill_backend/";
+    const initialValues = bill;
 
     const [downloadUrl, setDownloadUrl] = useState('')
 
@@ -50,9 +40,6 @@ function BillForm() {
     const vehicleNumberRegx = /^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/;
     const validate = values => {
         const errors = {};
-        // if (!values.buyerName) {
-        //     errors.buyerName = 'Required';
-        // }
         if (!values.buyerCompany) {
             errors.buyerCompany = 'Required';
         }

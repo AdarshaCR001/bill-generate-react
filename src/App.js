@@ -1,41 +1,46 @@
 import './App.css';
 import BillForm from './component/BillForm'
-import { Container, Card, Accordion } from 'react-bootstrap';
+import { Container, Card, Accordion, Col, Row, Button } from 'react-bootstrap';
 import Header from './component/Header';
-import React from 'react';
+import React, { useState } from 'react';
 import BillTable from './component/BillTable';
+import BillModal from './component/BillModal';
 
 function App() {
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => { setShow(true) };
+  const handleClose = () => { console.log("hello"); setShow(false) };
+
+  const initialValues = {
+    buyerName: '',
+    buyerCompany: '',
+    buyerAddress: '',
+    quantity: '',
+    price: '',
+    itemName: '',
+    bag: '',
+    vehicleNumber: '',
+    vehicleFreight: ''
+  };
 
   return (
     <>
       <Header />
+      <BillModal show={show} handleClose={handleClose} initialValues={initialValues} />
+      {show}
       <Container>
-        <Card body>
-          <Accordion defaultActiveKey="0">
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="0" style={{ display: 'flex', justifyContent: 'center' }}>
-                Bill Form
-              </Accordion.Toggle>
+        <Card>
+          <Row>
+            <Col>
+              <h2 className="text-right">Last 10 records</h2>
+            </Col>
+            <Col className="text-right">
+              <Button onClick={handleShow}>Add Invoice</Button>
+            </Col>
+          </Row>
 
-              <Accordion.Collapse eventKey="0">
-                <Card.Body><BillForm /></Card.Body>
-              </Accordion.Collapse>
-            </Card>
-
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="1" style={{ display: 'flex', justifyContent: 'center' }}>
-                Bills List
-              </Accordion.Toggle>
-
-              <Accordion.Collapse eventKey="1">
-                <Card.Body>
-                  <h2 className="text-center">Last 10 records</h2>
-                  <BillTable />
-                  </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion>
+          <BillTable />
         </Card>
       </Container>
     </>
