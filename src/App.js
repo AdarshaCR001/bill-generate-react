@@ -36,7 +36,7 @@ function App() {
               <h2 className="text-right">Last 10 records</h2>
             </Col>
             <Col className="text-right">
-              <Button onClick={handleShow}>Add Invoice</Button>
+              <Button onClick={handleShow} style={{margin:"5px"}}>Add Invoice</Button>
             </Col>
           </Row>
 

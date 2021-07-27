@@ -26,6 +26,11 @@ function BillTable() {
           <th>Buyer Name</th>
           <th>Company Name</th>
           <th>Item Name</th>
+          <th>Bag</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Vehicle Number</th>
+          <th>Vehicle Freight</th>
           <th>Amount</th>
           <th>Invoice</th>
         </tr>
