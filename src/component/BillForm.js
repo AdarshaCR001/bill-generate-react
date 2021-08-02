@@ -46,7 +46,7 @@ function BillForm({ bill }) {
         if (!values.buyerAddress) {
             errors.buyerAddress = 'Required';
         }
-        if (!Number.isInteger(values.quantity) || values.quantity < 1) {
+        if (values.quantity < 1) {
             errors.quantity = "Please enter valid number";
         }
         if (!Number.isInteger(values.price) || values.price < 1) {
@@ -162,7 +162,7 @@ function BillForm({ bill }) {
                 <Form.Label column sm="2" >Quantity</Form.Label>
                 <Col sm="10">
                     <Form.Control size="lg"
-                        type="number"
+                        type="text"
                         placeholder="Quantity"
                         id="quantity"
                         name="quantity"
