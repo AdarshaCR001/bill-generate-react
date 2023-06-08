@@ -4,7 +4,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 function BillForm({ bill }) {
-    const backendUrl = "http://localhost:8080/bill_backend/";
+    const backendUrl = "http://ec2-13-235-133-199.ap-south-1.compute.amazonaws.com:8080/bill_backend/";
     const initialValues = bill;
 
     const [downloadUrl, setDownloadUrl] = useState('')
