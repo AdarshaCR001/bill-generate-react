@@ -13,7 +13,7 @@ function BillTable() {
     getRecords();
   }, [])
   const getRecords = () => {
-    fetch("http://ec2-13-235-133-199.ap-south-1.compute.amazonaws.com:8080/bill_backend/bill/", requestOptions)
+    fetch(process.env.REACT_APP_API_URL+"bill_backend/bill/", requestOptions)
       .then(response => response.text())
       .then(result => { result = JSON.parse(result); setbills(result.content) })
       .catch(error => console.log('error', error));
