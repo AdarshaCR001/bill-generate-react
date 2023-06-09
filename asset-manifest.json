@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/bill-generate-react/static/css/main.13353553.chunk.css",
+    "main.js": "/bill-generate-react/static/js/main.cdd8f2e2.chunk.js",
+    "main.js.map": "/bill-generate-react/static/js/main.cdd8f2e2.chunk.js.map",
+    "runtime-main.js": "/bill-generate-react/static/js/runtime-main.69be5688.js",
+    "runtime-main.js.map": "/bill-generate-react/static/js/runtime-main.69be5688.js.map",
+    "static/css/2.4be38407.chunk.css": "/bill-generate-react/static/css/2.4be38407.chunk.css",
+    "static/js/2.d6b74092.chunk.js": "/bill-generate-react/static/js/2.d6b74092.chunk.js",
+    "static/js/2.d6b74092.chunk.js.map": "/bill-generate-react/static/js/2.d6b74092.chunk.js.map",
+    "static/js/3.21c93ab1.chunk.js": "/bill-generate-react/static/js/3.21c93ab1.chunk.js",
+    "static/js/3.21c93ab1.chunk.js.map": "/bill-generate-react/static/js/3.21c93ab1.chunk.js.map",
+    "index.html": "/bill-generate-react/index.html",
+    "static/css/2.4be38407.chunk.css.map": "/bill-generate-react/static/css/2.4be38407.chunk.css.map",
+    "static/css/main.13353553.chunk.css.map": "/bill-generate-react/static/css/main.13353553.chunk.css.map",
+    "static/js/2.d6b74092.chunk.js.LICENSE.txt": "/bill-generate-react/static/js/2.d6b74092.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.69be5688.js",
+    "static/css/2.4be38407.chunk.css",
+    "static/js/2.d6b74092.chunk.js",
+    "static/css/main.13353553.chunk.css",
+    "static/js/main.cdd8f2e2.chunk.js"
+  ]
+}
